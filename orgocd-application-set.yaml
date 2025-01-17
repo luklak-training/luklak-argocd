@@ -7,7 +7,7 @@ spec:
   generators:
     - git:
         repoURL: https://github.com/luklak-training/helm-luklak-student-service.git
-        revision: master
+        revision: main
         directories:
           - path: "*"
   template:
@@ -17,7 +17,7 @@ spec:
       project: default
       source:
         repoURL: https://github.com/luklak-training/helm-luklak-student-service.git
-        targetRevision: master
+        targetRevision: main
         chart: helm-luklak-student-service
         helm:
           valueFiles:
