@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: helm-applicationset
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/luklak-training/helm-luklak-student-service.git
+        revision: master
+        directories:
+          - path: "*"
+  template:
+    metadata:
+      name: helm-luklak-student-service
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/luklak-training/helm-luklak-student-service.git
+        targetRevision: master
+        chart: helm-luklak-student-service
+        helm:
+          valueFiles:
+            - values.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
