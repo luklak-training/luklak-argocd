@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hazelcast-service
+  labels:
+    app: hazelcast
+spec:
+  clusterIP: None # Sử dụng headless service
+  selector:
+    app: hazelcast
+  ports:
+    - name: hazelcast
+      port: 5701
+      targetPort: 5701
