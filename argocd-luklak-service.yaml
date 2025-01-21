@@ -4,11 +4,10 @@ metadata:
   name: helm-luklak-student-service
 spec:
   destination:
-    name: in-cluster
     namespace: default
     server: https://kubernetes.default.svc
   source:
-    path: helm-luklak-student-service
+    path: "."
     repoURL: https://github.com/luklak-training/helm-luklak-student-service.git
     targetRevision: master
   project: default
