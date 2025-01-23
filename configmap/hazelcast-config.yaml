@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hazelcast-config
+data:
+  hazelcast.yaml: |
+    hazelcast:
+      network:
+        join:
+          multicast:
+            enabled: false
+          kubernetes:
+            enabled: true
+            namespace: default
+            service-name: hazelcast-service
+        port:
+          port: 5701
+          auto-increment: true
+      cluster-name: my-hazelcast-cluster
